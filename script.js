@@ -245,6 +245,8 @@ App.prototype.doBook = function (url, opts) {
         const fixedSearchValue10 = "(10)";
         const fixedSearchValue11 = "(11)";
         const fixedSearchValue12 = "(12)";
+        const fixedSearchValue13 = "(13)";
+        const fixedSearchValue14 = "(14)";
 
 
 
@@ -260,6 +262,8 @@ App.prototype.doBook = function (url, opts) {
         this.onSearchClick10(fixedSearchValue10);
         this.onSearchClick11(fixedSearchValue11);
         this.onSearchClick12(fixedSearchValue12);
+        this.onSearchClick11(fixedSearchValue13);
+        this.onSearchClick12(fixedSearchValue14);
 
 
 /*
@@ -647,6 +651,9 @@ App.prototype.applyTheme = function () {
         },
         "::selection": {
             "background": "none"
+        },
+        ".notes-header": {
+            "display": "none !important;"
         }
 
     };
@@ -1091,12 +1098,12 @@ App.prototype.doSearchall = async function (q) {
             try {
                 // Принудительно выгружаем элемент перед загрузкой, если он уже загружен
                 if (item.document) {
-                    console.log(`Unloading item ${item.href} before reloading.`);
+                  //  console.log(`Unloading item ${item.href} before reloading.`);
                     item.unload();
                 }
 
                 // Загружаем элемент
-                console.log(`Loading item ${item.href}`);
+             //   console.log(`Loading item ${item.href}`);
                 await item.load(this.state.book.load.bind(this.state.book));
 
                 // Проверяем, что элемент загружен корректно
@@ -1106,7 +1113,7 @@ App.prototype.doSearchall = async function (q) {
                 }
 
                 // Выполняем поиск
-                console.log(`Searching in item ${item.href}`);
+              //  console.log(`Searching in item ${item.href}`);
                 const results = item.find(q);
 
                 // Проверяем результаты
@@ -1117,7 +1124,7 @@ App.prototype.doSearchall = async function (q) {
                 }
 
                 // Выгружаем элемент после поиска
-                console.log(`Unloading item ${item.href} after search.`);
+              //  console.log(`Unloading item ${item.href} after search.`);
                 item.unload();
                 return results;
 
@@ -1152,6 +1159,8 @@ App.prototype.doSearch9 = App.prototype.doSearchall;
 App.prototype.doSearch10 = App.prototype.doSearchall;
 App.prototype.doSearch11 = App.prototype.doSearchall;
 App.prototype.doSearch12 = App.prototype.doSearchall;
+App.prototype.doSearch13 = App.prototype.doSearchall;
+App.prototype.doSearch14 = App.prototype.doSearchall;
 
 
 App.prototype.onSearchClick1 = function (searchTerm) {
@@ -1228,7 +1237,7 @@ App.prototype.onSearchClick4 = function (searchTerm) {
         const container = this.qs(".setting-content4");
         container.innerHTML = ""; // Очистка контейнера
         results.slice(0, 10).forEach(result => {
-            console.log(result.cfi)
+        //  console.log(result.cfi)
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             let excerpt = result.excerpt.trim().replace(/^(\.\.\.|\s)+/, '');
@@ -1380,6 +1389,44 @@ App.prototype.onSearchClick11 = function (searchTerm) {
 App.prototype.onSearchClick12 = function (searchTerm) {
     this.doSearch12(searchTerm).then(results => {
         const container = this.qs(".setting-content12");
+        container.innerHTML = ""; // Очистка контейнера
+
+        results.slice(0, 20).forEach(result => {
+            let resultEl = document.createElement("div");
+            resultEl.className = "search-result";
+            let excerpt = result.excerpt.trim().replace(/^(\.\.\.|\s)+/, '');
+
+            resultEl.innerHTML = `
+                <a href="${result.cfi}" class="result-link">${excerpt}</a>
+            `;
+            resultEl.querySelector(".result-link").addEventListener("click", this.onResultClick.bind(this, result.cfi));
+            container.appendChild(resultEl);
+        });
+    }).catch(err => this.fatal("error searching book", err));
+};
+
+App.prototype.onSearchClick13 = function (searchTerm) {
+    this.doSearch13(searchTerm).then(results => {
+        const container = this.qs(".setting-content13");
+        container.innerHTML = ""; // Очистка контейнера
+
+        results.slice(0, 20).forEach(result => {
+            let resultEl = document.createElement("div");
+            resultEl.className = "search-result";
+            let excerpt = result.excerpt.trim().replace(/^(\.\.\.|\s)+/, '');
+
+            resultEl.innerHTML = `
+                <a href="${result.cfi}" class="result-link">${excerpt}</a>
+            `;
+            resultEl.querySelector(".result-link").addEventListener("click", this.onResultClick.bind(this, result.cfi));
+            container.appendChild(resultEl);
+        });
+    }).catch(err => this.fatal("error searching book", err));
+};
+
+App.prototype.onSearchClick14 = function (searchTerm) {
+    this.doSearch14(searchTerm).then(results => {
+        const container = this.qs(".setting-content14");
         container.innerHTML = ""; // Очистка контейнера
 
         results.slice(0, 20).forEach(result => {
