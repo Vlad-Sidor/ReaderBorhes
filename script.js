@@ -657,12 +657,13 @@ App.prototype.applyTheme = function () {
         },
         ".text_15": {
             "font-family": "GillSans-Light !important;",
-            "font-size": "14pt !important;"
+            "font-size": "14pt !important;",
+            "font-weight":"400 !important;"
         },
         "a:visited, a:focus, a:hover":{
-            "color": "#000;"
+            "color": "#000; !important;"
         },
-        ".text_15": {
+        ".text_12": {
             "font-weight":"400 !important;"
         }
 
