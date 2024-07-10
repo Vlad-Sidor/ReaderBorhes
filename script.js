@@ -610,14 +610,14 @@ App.prototype.applyTheme = function () {
             "font-size": theme.fs != "" ? `${theme.fs} !important` : "!invalid-hack",
         },
         "a": {
-            "color": "inherit !important",
+            "color": "#000 !important",
             "text-decoration": "none !important",
             "-webkit-text-fill-color": "inherit !important"
         },
         "a:link": {
-            "color": `${theme.l} !important`,
+            "color": `#000 !important`,
             "text-decoration": "none !important",
-            "-webkit-text-fill-color": `${theme.l} !important`
+            "-webkit-text-fill-color": `#000 !important`
         },
         "a:link:hover": {
             "background": "rgba(0, 0, 0, 0.1) !important"
