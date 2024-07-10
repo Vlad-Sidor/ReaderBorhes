@@ -654,6 +654,16 @@ App.prototype.applyTheme = function () {
         },
         ".notes-header": {
             "display": "none !important;"
+        },
+        ".text_15": {
+            "font-family": "GillSans-Light !important;",
+            "font-size": "14pt !important;"
+        },
+        "a:visited, a:focus, a:hover":{
+            "color": "#000;"
+        },
+        ".text_15": {
+            "font-weight":"400 !important;"
         }
 
     };
