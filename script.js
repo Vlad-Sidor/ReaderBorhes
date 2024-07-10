@@ -262,8 +262,8 @@ App.prototype.doBook = function (url, opts) {
         this.onSearchClick10(fixedSearchValue10);
         this.onSearchClick11(fixedSearchValue11);
         this.onSearchClick12(fixedSearchValue12);
-        this.onSearchClick11(fixedSearchValue13);
-        this.onSearchClick12(fixedSearchValue14);
+        this.onSearchClick13(fixedSearchValue13);
+        this.onSearchClick14(fixedSearchValue14);
 
 
 /*
